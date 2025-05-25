@@ -1,0 +1,155 @@
+You are a helpful assistant that writes Flutter widget tests using the `flutter_test` package.
+
+Here are two example widgets and their tests:
+
+```dart
+class CounterApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(child: TextButton(
+          key: Key('increment'),
+          onPressed: () {},
+          child: Text('+'),
+        )),
+      ),
+    );
+  }
+}
+
+testWidgets('CounterApp increments when button tapped', (WidgetTester tester) async {
+  await tester.pumpWidget(CounterApp());
+  await tester.tap(find.byKey(Key('increment')));
+  await tester.pump();
+  expect(find.text('1'), findsOneWidget);
+});
+
+class FavoritesItem extends StatelessWidget {
+  final String item;
+  final bool isFavorite;
+  const FavoritesItem({required this.item, required this.isFavorite, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(item),
+      trailing: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+    );
+  }
+}
+
+testWidgets('FavoritesItem shows filled heart when favorite', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: FavoritesItem(item: 'Apple', isFavorite: true),
+  ));
+  expect(find.byIcon(Icons.favorite), findsOneWidget);
+});
+```
+
+Now write a test for the following widget:
+Write a Flutter widget test for a ListView that loads items in batches (pagination) as the user scrolls. Ensure that items are loaded on scroll to the bottom and that a loading indicator is shown during fetch.
+
+```dart
+class ListPage extends StatefulWidget {
+  const ListPage({super.key});
+
+  @override
+  State<ListPage> createState() => _ListPageState();
+}
+
+class _ListPageState extends State<ListPage> {
+  final List<String> _items = [];
+  bool _isLoading = false;
+  int _page = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMore();
+  }
+
+  Future<void> _loadMore() async {
+    setState(() => _isLoading = true);
+    await Future.delayed(const Duration(milliseconds: 500));
+    setState(() {
+      _items.addAll(List.generate(20, (i) => 'Item \${_page * 20 + i + 1}'));
+      _isLoading = false;
+      _page++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return NotificationListener<ScrollNotification>(
+      onNotification: (scroll) {
+        if (!scroll.metrics.atEdge || _isLoading) return false;
+        if (scroll.metrics.pixels == scroll.metrics.maxScrollExtent) {
+          _loadMore();
+        }
+        return true;
+      },
+      child: ListView.builder(
+        itemCount: _items.length + (_isLoading ? 1 : 0),
+        itemBuilder: (context, index) {
+          if (index >= _items.length) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return ListTile(title: Text(_items[index]));
+        },
+      ),
+    );
+  }
+}
+```
+
+Write a test for the above widget.
+
+```dart
+testWidgets('ListPage loads items in batches', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: ListPage(),
+  ));
+  await tester.pumpAndSettle();
+  expect(find.text('Item 0'), findsOneWidget);
+  expect(find.text('Item 1'), findsOneWidget);
+  expect(find.text('Item 2'), findsOneWidget);
+  expect(find.text('Item 3'), findsOneWidget);
+  expect(find.text('Item 4'), findsOneWidget);
+  expect(find.text('Item 5'), findsOneWidget);
+  expect(find.text('Item 6'), findsOneWidget);
+  expect(find.text('Item 7'), findsOneWidget);
+  expect(find.text('Item 8'), findsOneWidget);
+  expect(find.text('Item 9'), findsOneWidget);
+  expect(find.text('Item 10'), findsOneWidget);
+  expect(find.text('Item 11'), findsOneWidget);
+  expect(find.text('Item 12'), findsOneWidget);
+  expect(find.text('Item 13'), findsOneWidget);
+  expect(find.text('Item 14'), findsOneWidget);
+  expect(find.text('Item 15'), findsOneWidget);
+  expect(find.text('Item 16'), findsOneWidget);
+  expect(find.text('Item 17'), findsOneWidget);
+  expect(find.text('Item 18'), findsOneWidget);
+  expect(find.text('Item 19'), findsOneWidget);
+  expect(find.text('Item 20'), findsOneWidget);
+  expect(find.text('Item 21'), findsOneWidget);
+  expect(find.text('Item 22'), findsOneWidget);
+  expect(find.text('Item 23'), findsOneWidget);
+  expect(find.text('Item 24'), findsOneWidget);
+  expect(find.text('Item 25'), findsOneWidget);
+  expect(find.text('Item 26'), findsOneWidget);
+  expect(find.text('Item 27'), findsOneWidget);
+  expect(find.text('Item 28'), findsOneWidget);
+  expect(find.text('Item 29'), findsOneWidget);
+  expect(find.text('Item 30'), findsOneWidget);
+  expect(find.text('Item 31'), findsOneWidget);
+  expect(find.text('Item 32'), findsOneWidget);
+  expect(find.text('Item 33'), findsOneWidget);
+  expect(find.text('Item 34'), findsOneWidget);
+  expect(find.text('Item 35'), findsOneWidget);
+  expect(find.text('Item 36'), findsOneWidget);
+  expect(find.text('Item 37'), findsOneWidget);
+  expect(find.text('Item 38'), findsOneWidget);
+  expect(find.text('Item 39'), findsOneWidget);
+  expect(find.text('Item 40'), findsOneWidget);
+  expect(find.text('Item

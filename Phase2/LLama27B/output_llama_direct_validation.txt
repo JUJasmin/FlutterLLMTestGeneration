@@ -1,0 +1,102 @@
+You are a helpful assistant that writes Flutter widget tests using the `flutter_test` package. Write a Flutter widget test for a login form that uses TextFormField and validates the email address. The form should disable the submit button until a valid email is entered. Test invalid and valid input states and ensure submit logic is conditionally enabled.
+
+```dart
+class LoginFormValidation extends StatefulWidget {
+  const LoginFormValidation({super.key});
+
+  @override
+  State<LoginFormValidation> createState() => _LoginFormValidationState();
+}
+
+class _LoginFormValidationState extends State<LoginFormValidation> {
+  final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+
+  bool get _isValid => _formKey.currentState?.validate() ?? false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            key: const Key('username'),
+            controller: _usernameController,
+            decoration: const InputDecoration(labelText: 'Username'),
+            validator: (value) =>
+                (value != null && value.contains('@')) ? null : 'Username is email',
+          ),
+          ElevatedButton(
+            key: const Key('submit'),
+            onPressed: _isValid ? () {} : null,
+            child: const Text('Submit'),
+          )
+        ],
+      ),
+    );
+  }
+}
+```
+
+## Solution
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: LoginFormValidation(),
+    );
+  }
+}
+
+class LoginFormValidation extends StatefulWidget {
+  const LoginFormValidation({Key? key}) : super(key: key);
+
+  @override
+  State<LoginFormValidation> createState() => _LoginFormValidationState();
+}
+
+class _LoginFormValidationState extends State<LoginFormValidation> {
+  final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+
+  bool get _isValid => _formKey.currentState?.validate() ?? false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            key: const Key('username'),
+            controller: _usernameController,
+            decoration: const InputDecoration(labelText: 'Username'),
+            validator: (value) =>
+                (value != null && value.contains('@')) ? null : 'Username is email',
+          ),
+          ElevatedButton(
+            key: const Key('submit'),
+            onPressed: _isValid ? () {} : null,
+            child: const Text('Submit'),
+          )
+        ],
+      ),
+    );
+  }
+}
+```

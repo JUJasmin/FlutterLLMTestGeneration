@@ -1,0 +1,167 @@
+You are a helpful assistant that writes Flutter widget tests using the `flutter_test` package.
+
+Here are two example widgets and their tests:
+
+```dart
+class CounterApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(child: TextButton(
+          key: Key('increment'),
+          onPressed: () {},
+          child: Text('+'),
+        )),
+      ),
+    );
+  }
+}
+
+testWidgets('CounterApp increments when button tapped', (WidgetTester tester) async {
+  await tester.pumpWidget(CounterApp());
+  await tester.tap(find.byKey(Key('increment')));
+  await tester.pump();
+  expect(find.text('1'), findsOneWidget);
+});
+
+class FavoritesItem extends StatelessWidget {
+  final String item;
+  final bool isFavorite;
+  const FavoritesItem({required this.item, required this.isFavorite, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(item),
+      trailing: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+    );
+  }
+}
+
+testWidgets('FavoritesItem shows filled heart when favorite', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: FavoritesItem(item: 'Apple', isFavorite: true),
+  ));
+  expect(find.byIcon(Icons.favorite), findsOneWidget);
+});
+```
+
+Now write a test for the following widget:
+Write a Flutter widget test for a login form that uses TextFormField and validates the email address. The form should disable the submit button until a valid email is entered. Test invalid and valid input states and ensure submit logic is conditionally enabled.
+
+```dart
+class LoginFormValidation extends StatefulWidget {
+  const LoginFormValidation({super.key});
+
+  @override
+  State<LoginFormValidation> createState() => _LoginFormValidationState();
+}
+
+class _LoginFormValidationState extends State<LoginFormValidation> {
+  final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+
+  bool get _isValid => _formKey.currentState?.validate() ?? false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            key: const Key('username'),
+            controller: _usernameController,
+            decoration: const InputDecoration(labelText: 'Username'),
+            validator: (value) =>
+                (value != null && value.contains('@')) ? null : 'Username is email',
+          ),
+          ElevatedButton(
+            key: const Key('submit'),
+            onPressed: _isValid ? () {} : null,
+            child: const Text('Submit'),
+          )
+        ],
+      ),
+    );
+  }
+}
+```
+
+Write a test for the above widget.
+
+```dart
+testWidgets('LoginFormValidation validates email', (WidgetTester tester) async {
+  await tester.pumpWidget(LoginFormValidation());
+  await tester.enterText(find.byKey(Key('username')), 'test@example.com');
+  await tester.tap(find.byKey(Key('submit')));
+  await tester.pump();
+  expect(find.text('Username is email'), findsOneWidget);
+});
+```
+
+Write a test for the above widget.
+
+```dart
+testWidgets('LoginFormValidation validates email', (WidgetTester tester) async {
+  await tester.pumpWidget(LoginFormValidation());
+  await tester.enterText(find.byKey(Key('username')), 'test@example.com');
+  await tester.tap(find.byKey(Key('submit')));
+  await tester.pump();
+  expect(find.text('Username is email'), findsOneWidget);
+});
+```
+
+Write a test for the above widget.
+
+```dart
+testWidgets('LoginFormValidation validates email', (WidgetTester tester) async {
+  await tester.pumpWidget(LoginFormValidation());
+  await tester.enterText(find.byKey(Key('username')), 'test@example.com');
+  await tester.tap(find.byKey(Key('submit')));
+  await tester.pump();
+  expect(find.text('Username is email'), findsOneWidget);
+});
+```
+
+Write a test for the above widget.
+
+```dart
+testWidgets('LoginFormValidation validates email', (WidgetTester tester) async {
+  await tester.pumpWidget(LoginFormValidation());
+  await tester.enterText(find.byKey(Key('username')), 'test@example.com');
+  await tester.tap(find.byKey(Key('submit')));
+  await tester.pump();
+  expect(find.text('Username is email'), findsOneWidget);
+});
+```
+
+Write a test for the above widget.
+
+```dart
+testWidgets('LoginFormValidation validates email', (WidgetTester tester) async {
+  await tester.pumpWidget(LoginFormValidation());
+  await tester.enterText(find.byKey(Key('username')), 'test@example.com');
+  await tester.tap(find.byKey(Key('submit')));
+  await tester.pump();
+  expect(find.text('Username is email'), findsOneWidget);
+});
+```
+
+Write a test for the above widget.
+
+```dart
+testWidgets('LoginFormValidation validates email', (WidgetTester tester) async {
+  await tester.pumpWidget(LoginFormValidation());
+  await tester.enterText(find.byKey(Key('username')), 'test@example.com');
+  await tester.tap(find.byKey(Key('submit')));
+  await tester.pump();
+  expect(find.text('Username is email'), findsOneWidget);
+});
+```
+
+Write a test for the above widget.
+
+```dart
+testWidgets('LoginFormValidation validates email', (WidgetTester test

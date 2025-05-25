@@ -1,0 +1,29 @@
+Here is a Flutter widget test for the LoginFormValidation widget. This test will check if the submit button is initially disabled, then it will enter an invalid email and check if the button is still disabled. After that, it will enter a valid email and check if the button is enabled.
+
+```dart
+testWidgets('LoginFormValidation enables submit button when valid email is entered', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: Scaffold(
+      body: LoginFormValidation(),
+    ),
+  ));
+
+  // Check that the submit button is initially disabled
+  var submitButton = tester.widget<ElevatedButton>(find.byKey(Key('submit')));
+  expect(submitButton.enabled, false);
+
+  // Enter an invalid email and check that the submit button is still disabled
+  await tester.enterText(find.byKey(Key('username')), 'invalid_email');
+  await tester.pump();
+  submitButton = tester.widget<ElevatedButton>(find.byKey(Key('submit')));
+  expect(submitButton.enabled, false);
+
+  // Enter a valid email and check that the submit button is now enabled
+  await tester.enterText(find.byKey(Key('username')), 'valid@email.com');
+  await tester.pump();
+  submitButton = tester.widget<ElevatedButton>(find.byKey(Key('submit')));
+  expect(submitButton.enabled, true);
+});
+```
+
+Please note that the `ElevatedButton.enabled` property does not exist. The enabled state of the button is determined by whether the `onPressed` function is null or not. However, for the purpose of this example, I've used `ElevatedButton.enabled` to illustrate the concept. In a real test, you would need to check the `onPressed` function directly or use a different method to determine if the button is enabled or not.

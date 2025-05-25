@@ -1,0 +1,36 @@
+Sure, here is a Flutter widget test for the `ListPage` widget. This test will ensure that the ListView loads items when scrolled to the bottom and shows a loading indicator during the fetch.
+
+```dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter/material.dart';
+import 'package:your_package_name/your_file_name.dart'; // replace with your actual file path
+
+void main() {
+  testWidgets('ListView loads more items and shows loading indicator', (WidgetTester tester) async {
+    // Build the ListPage widget
+    await tester.pumpWidget(MaterialApp(home: ListPage()));
+
+    // Initially, the ListView should display 20 items and a loading indicator
+    expect(find.byType(ListTile), findsNWidgets(20));
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+    // Trigger a scroll to the end of the ListView to load more items
+    await tester.fling(find.byType(ListView), Offset(0, -500), 3000);
+    await tester.pumpAndSettle();
+
+    // After scrolling, the ListView should display 40 items and a loading indicator
+    expect(find.byType(ListTile), findsNWidgets(40));
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+    // Trigger another scroll to the end of the ListView to load more items
+    await tester.fling(find.byType(ListView), Offset(0, -500), 3000);
+    await tester.pumpAndSettle();
+
+    // After the second scroll, the ListView should display 60 items and a loading indicator
+    expect(find.byType(ListTile), findsNWidgets(60));
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+  });
+}
+```
+
+This test will simulate user interaction by scrolling the ListView and then check that the expected number of items are loaded and that a loading indicator is displayed. Please replace `'package:your_package_name/your_file_name.dart'` with the actual path to your `ListPage` widget.

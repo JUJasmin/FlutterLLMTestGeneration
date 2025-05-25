@@ -1,0 +1,33 @@
+Sure, here is a Flutter widget test for your LoginFormValidation widget:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:your_package/login_form_validation.dart';
+
+void main() {
+  testWidgets('LoginFormValidation Test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(MaterialApp(home: Scaffold(body: LoginFormValidation())));
+
+    // Verify the submit button is initially disabled.
+    expect(tester.widget<ElevatedButton>(find.byKey(Key('submit'))).enabled, false);
+
+    // Test invalid email
+    await tester.enterText(find.byKey(Key('username')), 'invalidEmail');
+    await tester.pump();
+
+    // Verify the submit button is still disabled.
+    expect(tester.widget<ElevatedButton>(find.byKey(Key('submit'))).enabled, false);
+
+    // Test valid email
+    await tester.enterText(find.byKey(Key('username')), 'valid@email.com');
+    await tester.pump();
+
+    // Verify the submit button is enabled.
+    expect(tester.widget<ElevatedButton>(find.byKey(Key('submit'))).enabled, true);
+  });
+}
+```
+
+This test will first verify that the submit button is initially disabled. Then it will enter an invalid email and verify that the submit button is still disabled. Finally, it will enter a valid email and verify that the submit button is enabled.

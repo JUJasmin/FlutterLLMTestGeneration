@@ -1,0 +1,44 @@
+Here is a widget test for the `ExpandableCard` widget:
+
+```dart
+testWidgets('ExpandableCard expands and collapses when icon button is tapped', (WidgetTester tester) async {
+  // Define the test widget
+  const testWidget = MaterialApp(
+    home: ExpandableCard(
+      title: 'Test Title',
+      description: 'Test Description',
+    ),
+  );
+
+  // Build the test widget
+  await tester.pumpWidget(testWidget);
+
+  // Verify initial state
+  expect(find.text('Test Title'), findsOneWidget);
+  expect(find.text('Test Description'), findsNothing);
+  expect(find.byIcon(Icons.expand_more), findsOneWidget);
+  expect(find.byIcon(Icons.expand_less), findsNothing);
+
+  // Tap the expand icon button
+  await tester.tap(find.byIcon(Icons.expand_more));
+  await tester.pump();
+
+  // Verify expanded state
+  expect(find.text('Test Title'), findsOneWidget);
+  expect(find.text('Test Description'), findsOneWidget);
+  expect(find.byIcon(Icons.expand_more), findsNothing);
+  expect(find.byIcon(Icons.expand_less), findsOneWidget);
+
+  // Tap the collapse icon button
+  await tester.tap(find.byIcon(Icons.expand_less));
+  await tester.pump();
+
+  // Verify collapsed state
+  expect(find.text('Test Title'), findsOneWidget);
+  expect(find.text('Test Description'), findsNothing);
+  expect(find.byIcon(Icons.expand_more), findsOneWidget);
+  expect(find.byIcon(Icons.expand_less), findsNothing);
+});
+```
+
+This test verifies that the `ExpandableCard` widget initially shows the title and the expand icon, but not the description or the collapse icon. When the expand icon is tapped, the widget shows the description and the collapse icon, but not the expand icon. When the collapse icon is tapped, the widget returns to its initial state.

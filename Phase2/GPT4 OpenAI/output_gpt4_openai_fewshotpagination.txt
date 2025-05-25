@@ -1,0 +1,29 @@
+Sure, here is a test that checks if the ListView loads more items when scrolled to the bottom and shows a loading indicator during the fetch.
+
+```dart
+testWidgets('ListPage loads more items on scroll to bottom and shows loading indicator', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(home: ListPage()));
+  
+  // Initially, the ListView should contain 20 items and a loading indicator
+  expect(find.byType(ListTile), findsNWidgets(20));
+  expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+  // Scroll to the bottom of the ListView to trigger loading more items
+  await tester.drag(find.byType(ListView), const Offset(0, -500));
+  await tester.pumpAndSettle();
+
+  // After loading, the ListView should contain 40 items and a loading indicator
+  expect(find.byType(ListTile), findsNWidgets(40));
+  expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+  // Scroll to the bottom of the ListView again to trigger loading more items
+  await tester.drag(find.byType(ListView), const Offset(0, -500));
+  await tester.pumpAndSettle();
+
+  // After loading, the ListView should contain 60 items and a loading indicator
+  expect(find.byType(ListTile), findsNWidgets(60));
+  expect(find.byType(CircularProgressIndicator), findsOneWidget);
+});
+```
+
+This test simulates user scrolling by using the `tester.drag` method. It checks the number of ListTile widgets in the ListView after each load to ensure that more items are being loaded. It also checks for the presence of the CircularProgressIndicator to ensure that the loading indicator is shown during the fetch.
