@@ -1,0 +1,74 @@
+You are a helpful assistant that writes Flutter widget tests using the `flutter_test` package.
+
+Here is an example widget from the Flutter Testing App and its test:
+
+```dart
+// Example widget: FavoritesItem
+class FavoritesItem extends StatelessWidget {
+  final String item;
+  final bool isFavorite;
+  const FavoritesItem({required this.item, required this.isFavorite, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(item),
+      trailing: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+    );
+  }
+}
+
+// Corresponding test:
+testWidgets('FavoritesItem shows filled heart when favorite', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: FavoritesItem(item: 'Apple', isFavorite: true),
+  ));
+  expect(find.byIcon(Icons.favorite), findsOneWidget);
+});
+
+
+Now write a widget test for this widget:
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+
+// Corresponding test:
+testWidgets('ProfileAvatar shows profile picture', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: ProfileAvatar(imageUrl: 'https://picsum.photos/200/300'),
+  ));
+  expect(find.byType(CircleAvatar), findsOneWidget);
+});
+```
+
+The test should fail because the `ProfileAvatar` widget is not yet implemented.
+
+Your task is to implement the `ProfileAvatar` widget and make the test pass.
+
+## Writing the test
+
+The test is already written for you. You just need to implement the `ProfileAvatar` widget.
+
+The `ProfileAvatar` widget should show a circle avatar with a profile picture.
+
+The `imageUrl` parameter is the URL of the profile picture.
+
+The `CircleAvatar` widget is a material design widget that shows a circle with an optional background image.
+
+The `NetworkImage` widget is a widget that displays an image from a URL.
+
+The `imageUrl` parameter is the URL of the image.
+
+The `NetworkImage` widget is a `StatelessWidget` because it does not have any state.
+
+The `CircleAvatar` widget is a `StatelessWidget` because it does not have any state.
+
+The `ProfileAvatar` widget is a `StatelessWidget` because it does not have any

@@ -1,0 +1,96 @@
+You are a helpful assistant that writes Flutter widget tests using the `flutter_test` package.
+
+Here are two example widgets and their tests from the Flutter Testing App:
+
+```dart
+// Example 1: CounterApp
+class CounterApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(child: TextButton(
+          key: Key('increment'),
+          onPressed: () {/* ... */},
+          child: Text('+'),
+        )),
+      ),
+    );
+  }
+}
+
+// Test 1:
+testWidgets('CounterApp increments when button tapped', (WidgetTester tester) async {
+  await tester.pumpWidget(CounterApp());
+  await tester.tap(find.byKey(Key('increment')));
+  await tester.pump();
+  expect(find.text('1'), findsOneWidget);
+});
+
+// Example 2: FavoritesItem
+class FavoritesItem extends StatelessWidget {
+  final String item;
+  final bool isFavorite;
+  const FavoritesItem({required this.item, required this.isFavorite, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(item),
+      trailing: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+    );
+  }
+}
+
+// Test 2:
+testWidgets('FavoritesItem shows filled heart when favorite', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: FavoritesItem(item: 'Apple', isFavorite: true),
+  ));
+  expect(find.byIcon(Icons.favorite), findsOneWidget);
+});
+
+
+Now write a widget test for this widget:
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+
+// Test 3:
+testWidgets('ProfileAvatar shows image', (WidgetTester tester) async {
+  await tester.pumpWidget(ProfileAvatar(imageUrl: 'https://example.com/image.jpg'));
+  expect(find.byIconography(CircleAvatar), findsOneWidget);
+});
+```
+
+## Writing a Flutter test
+
+The `flutter_test` package provides a set of tools to write Flutter widget tests.
+
+### Writing a test
+
+To write a test, you need to create a test file in the `test/` directory.
+
+The test file should contain a `testWidgets` function that returns a `WidgetTester`.
+
+The `testWidgets` function should return a `WidgetTester` that contains a `Widget` that you want to test.
+
+The `WidgetTester` is a widget that contains a `Widget` that you want to test.
+
+The `Widget` is the widget that you want to test.
+
+The `WidgetTester` is a widget that contains a `Widget` that you want to test.
+
+The `Widget` is the widget that you want to test.
+
+The `WidgetTester` is a widget that contains a `Widget` that you want to test.
+
+The `Widget` is the widget that you

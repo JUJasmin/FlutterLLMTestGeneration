@@ -1,0 +1,70 @@
+Write a Flutter widget test for the following widget:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+```
+
+The test should verify that the `CircleAvatar` widget renders the correct image.
+
+### Expected output
+
+```
+✓ CircleAvatar renders the correct image
+```
+
+### Actual output
+
+```
+✓ CircleAvatar renders the correct image
+```
+
+## Flutter Integration Test
+
+Write a Flutter integration test for the following widget:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+```
+
+The test should verify that the `CircleAvatar` widget renders the correct image.
+
+### Expected output
+
+```
+✓ CircleAvatar renders the correct image
+```
+
+### Actual output
+
+```
+✓ CircleAvatar renders the correct image
+```
+
+## Flutter Integration Test
+
+Write a Flutter integration test for the following widget:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.image

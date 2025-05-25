@@ -1,0 +1,33 @@
+Write a Flutter widget test for the following widget:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+```
+
+The test should check that the widget is rendered correctly.
+
+For more information about how to write widget tests, see [Writing widget tests](https://flutter.dev/docs/testing/widget-tests).
+
+For information about how to use `flutter_test`, see [flutter_test package](https://pub.dev/packages/flutter_test).
+
+For information about how to use `testWidgets`, see [testWidgets function](https://api.flutter.dev/flutter/flutter_test/testWidgets.html).
+
+For information about how to use `expect`, see [expect function](https://api.flutter.dev/flutter/flutter_test/expect.html).
+
+For information about how to use `find.byType`, see [find.byType function](https://api.flutter.dev/flutter/flutter_test/finders/CommonFinders/byType.html).
+
+For information about how to use `find.byKey`, see [find.byKey function](https://api.flutter.dev/flutter/flutter_test/finders/CommonFinders/byKey.html).
+
+For information about how to use `find.text`, see [find.text function](https://api.flutter.dev/flutter/flutter_test/finders/CommonFinders/text.html).
+
+For information about how to use `

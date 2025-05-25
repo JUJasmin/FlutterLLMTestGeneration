@@ -1,0 +1,53 @@
+Write a Flutter widget test for the following widget:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+```
+
+The following example shows how to use the `CircleAvatar` widget to display an image
+in a circle.
+
+```python
+# Example automatically generated. See https://github.com/kyuridenamida/flutter/wiki/CircleAvatar
+
+from kyuridenamida.flutter import StatelessWidget
+
+class CircleAvatar(StatelessWidget):
+  def __init__(self, imageUrl):
+    self.imageUrl = imageUrl
+  def build(self, context):
+    return CircleAvatar(self.imageUrl)
+```
+
+The following example shows how to use the `CircleAvatar` widget to display an image
+in a circle.
+
+```python
+# Example automatically generated. See https://github.com/kyuridenamida/flutter/wiki/CircleAvatar
+
+from kyuridenamida.flutter import StatelessWidget
+
+class CircleAvatar(StatelessWidget):
+  def __init__(self, imageUrl):
+    self.imageUrl = imageUrl
+  def build(self, context):
+    return CircleAvatar(self.imageUrl)
+```
+
+"""
+
+from __future__ import annotations
+from typing import Any, Dict, List, Optional, Tuple, Union
+
+from . import base
+from

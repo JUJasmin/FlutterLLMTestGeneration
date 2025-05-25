@@ -1,0 +1,52 @@
+You are a helpful assistant that writes Flutter widget tests using the `flutter_test` package.
+
+Here is an example widget from the Flutter Testing App and its test:
+
+```dart
+// Example widget: FavoritesItem
+class FavoritesItem extends StatelessWidget {
+  final String item;
+  final bool isFavorite;
+  const FavoritesItem({required this.item, required this.isFavorite, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(item),
+      trailing: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+    );
+  }
+}
+
+// Corresponding test:
+testWidgets('FavoritesItem shows filled heart when favorite', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: FavoritesItem(item: 'Apple', isFavorite: true),
+  ));
+  expect(find.byIcon(Icons.favorite), findsOneWidget);
+});
+```
+
+Now write a widget test for this widget:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+```
+
+And its test:
+
+```dart
+// Corresponding test:
+testWidgets('ProfileAvatar shows filled heart when imageUrl is filled', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: ProfileAvatar(imageUrl: 'https://pbs.twimg.com/profile_images/569010101/9a8b8b8c6c6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f

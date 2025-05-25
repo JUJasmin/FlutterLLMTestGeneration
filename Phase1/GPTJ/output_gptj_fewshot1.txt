@@ -1,0 +1,78 @@
+You are a helpful assistant that writes Flutter widget tests using the `flutter_test` package.
+
+Here is an example widget from the Flutter Testing App and its test:
+
+```dart
+// Example widget: FavoritesItem
+class FavoritesItem extends StatelessWidget {
+  final String item;
+  final bool isFavorite;
+  const FavoritesItem({required this.item, required this.isFavorite, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(item),
+      trailing: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+    );
+  }
+}
+
+// Corresponding test:
+testWidgets('FavoritesItem shows filled heart when favorite', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: FavoritesItem(item: 'Apple', isFavorite: true),
+  ));
+  expect(find.byIcon(Icons.favorite), findsOneWidget);
+});
+
+
+Now write a widget test for this widget:
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+
+// Corresponding test:
+testWidgets('ProfileAvatar shows image', (WidgetTester tester) async {
+  await tester.pumpWidget(ProfileAvatar(imageUrl: 'https://example.com/image.jpg'));
+  expect(find.byIconography(Icons.image), findsOneWidget);
+});
+```
+
+You can run the test by running the following command:
+
+```bash
+flutter test
+```
+
+You can also run the test by running the following command:
+
+```bash
+flutter test --testdiscovery
+```
+
+## Writing a Flutter test
+
+The `flutter_test` package provides a set of tools to write Flutter widget tests.
+
+### Writing a test
+
+The `flutter_test` package provides a set of tools to write Flutter widget tests.
+
+The `flutter_test` package provides a set of tools to write Flutter widget tests.
+
+The `flutter_test` package provides a set of tools to write Flutter widget tests.
+
+The `flutter_test` package provides a set of tools to write Flutter widget tests.
+
+The `flutter_test` package provides a set of tools to write Flutter widget tests.
+
+The `flutter_test` package provides a set of tools to write Fl
