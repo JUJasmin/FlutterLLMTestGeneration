@@ -26,3 +26,10 @@ Widgets are added in the "lib" directory.
 Generated tests are added in the "test" directory. Note: All test files should end in _test.dart
 
 Submited thourgh an action to SonarQube. 
+
+
+## Example OpenAI
+
+Currently, there is an example of OpenAI generated outputs for the widgets in the "lib" directory. 
+
+Observe that these are only direct prompt results.
