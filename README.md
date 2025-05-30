@@ -1,4 +1,4 @@
-# Flutter LLM Test Generation
+# Flutter LLM Test Generation - Research Setup
 
 This repository contains the setup, scripts, and results from an empirical research project evaluating Large Language Models' (LLMs) ability to generate Flutter widget tests.
 
