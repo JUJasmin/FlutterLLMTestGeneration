@@ -4,11 +4,11 @@ This repository contains the setup, scripts, and results from an empirical resea
 
 ## Repository Structure
 
-* **Phase I**
+* **Phase1**
 
   * Contains Python scripts and generated outputs from the initial phase, testing multiple LLM models with varying prompt complexity.
 
-* **Phase II**
+* **Phase2**
 
   * Includes Python scripts and outputs from the second phase, where selected promising models from Phase I were tested on more complex Flutter widgets.
 
@@ -64,7 +64,7 @@ The project was structured into two phases:
 1. Navigate to the Phase I directory:
 
    ```bash
-   cd Phase\ I
+   cd Phase1
    ```
 
 2. Run the Python scripts for each model:
@@ -80,7 +80,7 @@ The project was structured into two phases:
 1. Navigate to the Phase II directory:
 
    ```bash
-   cd ../Phase\ II
+   cd ../Phase2
    ```
 
 2. Execute tests for complex widgets:
