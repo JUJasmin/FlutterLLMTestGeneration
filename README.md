@@ -4,21 +4,21 @@ This repository contains the setup, scripts, and results from an empirical resea
 
 ## Repository Structure
 
-* **Phase I/**
+* **Phase I**
 
   * Contains Python scripts and generated outputs from the initial phase, testing multiple LLM models with varying prompt complexity.
 
-* **Phase II/**
+* **Phase II**
 
   * Includes Python scripts and outputs from the second phase, where selected promising models from Phase I were tested on more complex Flutter widgets.
 
-* **SonarQube/**
+* **SonarQube**
 
   * Setup files and instructions for integrating SonarQube for automated test evaluation and code coverage analysis.
 
-* **Setupscript/**
+* **Setupscript**
 
-  * `setup_flutter_test_env_with_token.sh` – A bash script for quickly setting up the required environment, installing dependencies, and authenticating Hugging Face tokens.
+  * `setup_flutter_test_env_with_token.sh` – A bash script for quickly setting up the required environment, installing dependencies, and authenticating Hugging Face and OpenAI tokens (use own tokens here!).
 
 ## Methodology
 
@@ -116,8 +116,8 @@ Review the tables and output files in each phase folder for detailed model perfo
 If you find this repository useful in your research, please cite:
 
 ```
-@misc{your_name2025flutterllm,
-  author = {Your Name},
+@misc{jasmin_jakupovic2025flutterllm,
+  author = {Jasmin Jakupovic},
   title = {Evaluating Large Language Models for Flutter Test Generation},
   year = {2025},
   publisher = {GitHub},
@@ -125,7 +125,3 @@ If you find this repository useful in your research, please cite:
   howpublished = {\url{https://github.com/JUJasmin/FlutterLLMTestGeneration}}
 }
 ```
-
-## Acknowledgments
-
-We thank our supervisors, collaborators at Thule, and colleagues from the School of Engineering for their valuable insights and contributions to this research project.
