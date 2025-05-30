@@ -1,4 +1,4 @@
-# automatic_app_test
+# SonarQube
 
 Automated testing of flutter developed apps
 
