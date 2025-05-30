@@ -14,3 +14,15 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+## How it is used in our research?
+
+We used SonarQube to evaluate the coverage of generated tests.
+
+Setup:
+
+Widgets are added in the "lib" directory.
+Generated tests are added in the "test" directory. Note: All test files should end in _test.dart
+
+Submited thourgh an action to SonarQube. 
