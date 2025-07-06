@@ -116,9 +116,9 @@ Review the tables and output files in each phase folder for detailed model perfo
 If you find this repository useful in your research, please cite:
 
 ```
-@misc{jasmin_jakupovic2025flutterllm,
-  author = {Jasmin Jakupovic},
-  title = {Evaluating Large Language Models for Flutter Test Generation},
+@misc{anon2025flutterllm,
+  author = {anon},
+  title = {Evaluating Complexity Limits in Flutter Test Automation},
   year = {2025},
   publisher = {GitHub},
   journal = {GitHub repository},
