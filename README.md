@@ -5,7 +5,7 @@ This repository contains the setup, scripts, and results from an empirical resea
 ## Repository Structure
 
 * **Widgets**
-* The widgets in test can be found here.
+  * The widgets in test can be found here.
 
 * **Phase1**
 
