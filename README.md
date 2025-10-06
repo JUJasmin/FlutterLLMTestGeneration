@@ -6,6 +6,9 @@ This repository contains the setup, scripts, and results from an empirical resea
 
 * **Widgets**
   * The widgets in test can be found here.
+ 
+   * **Seeded Faults**
+  * Widgets with seeded faults can be found here.
 
 * **Phase1**
 
