@@ -36,7 +36,7 @@ The project was structured into two phases:
 * Prompt styles: Direct, Few-shot (1 example), Few-shot (2 examples).
 * Evaluation: Output Quality, Semantic Accuracy, and Correctness (FC: Functionally Correct, FI: Functionally Incorrect, SI: Syntactically Incorrect).
 
-## Seeded Faults
+#### Seeded Faults
 
 * Implemented seeded faults and tested against LLM-generated tests to evaluate how LLMs approach the tests, if they only cover the basics or even cover the test in depth.
 
