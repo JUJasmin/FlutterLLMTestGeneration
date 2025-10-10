@@ -1,0 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+// Import your ProfileAvatar widget here
+import 'package:your_package/profile_avatar.dart'; // Replace with actual import
+
+void main() {
+  testWidgets('ProfileAvatar renders with a network image', (WidgetTester tester) async {
+    const testImageUrl = 'https://example.com/avatar.jpg';
+
+    await tester.pumpWidget(const MaterialApp(
+      home: ProfileAvatar(imageUrl: testImageUrl),
+    ));
+
+    // Verify that a CircleAvatar is found
+    expect(find.byType(CircleAvatar), findsOneWidget);
+  });
+}
