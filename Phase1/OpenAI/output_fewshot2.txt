@@ -1,0 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+// Replace with your actual import path
+import 'package:your_package/profile_avatar.dart';
+
+void main() {
+  testWidgets('ProfileAvatar shows a CircleAvatar', (WidgetTester tester) async {
+    const testImageUrl = 'https://example.com/avatar.jpg';
+
+    await tester.pumpWidget(const MaterialApp(
+      home: ProfileAvatar(imageUrl: testImageUrl),
+    ));
+
+    // Verify that a CircleAvatar is rendered
+    expect(find.byType(CircleAvatar), findsOneWidget);
+  });
+}
