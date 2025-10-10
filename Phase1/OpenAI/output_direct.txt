@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:your_package/profile_avatar.dart'; // Update with your actual import
+import 'package:network_image_mock/network_image_mock.dart';
+
+void main() {
+  testWidgets('ProfileAvatar displays a CircleAvatar with network image', (WidgetTester tester) async {
+    const testImageUrl = 'https://example.com/avatar.jpg';
+
+    // Mock the network image call
+    await mockNetworkImagesFor(() async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: ProfileAvatar(imageUrl: testImageUrl),
+          ),
+        ),
+      );
+
+      // Ensure widget is built
+      expect(find.byType(ProfileAvatar), findsOneWidget);
+      expect(find.byType(CircleAvatar), findsOneWidget);
+
+      final CircleAvatar avatar = tester.widget(find.byType(CircleAvatar));
+      expect(avatar.backgroundImage, isA<NetworkImage>());
+      final NetworkImage image = avatar.backgroundImage as NetworkImage;
+      expect(image.url, testImageUrl);
+    });
+  });
+}
