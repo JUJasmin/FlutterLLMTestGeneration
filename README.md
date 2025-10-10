@@ -54,17 +54,19 @@ The project was structured into two phases:
 
 ## Environment Setup
 
-1. Clone this repository:
-
-   ```bash
-   git clone https://github.com/JUJasmin/FlutterLLMTestGeneration.git
-   cd FlutterLLMTestGeneration
-   ```
-
-2. Run the setup script (make sure to update with your Hugging Face token):
+1. Clone this repository.
+2. Set up an account on Runpod.io or any other service of your choice. Alternatively, use your own server. Future steps might differ based on your setup environment.
+3. Upload the repository contents to your server.
+4. Run the setup script (make sure to update with your Hugging Face and OpenAI tokens):
 
    ```bash
    bash Setupscript/setup_flutter_test_env_with_token.sh
+   ```
+
+5. Run the experiments using Python on your server. Read more about it in the following section.
+
+   ```bash
+   python Phase1/run_tests_MODELNAME.py
    ```
 
 ## Running the Experiments
@@ -113,7 +115,7 @@ The project was structured into two phases:
 
 ## Interpreting Results
 
-Results from both phases are categorized into:
+Results from both phases are categorised into:
 
 * **Functionally Correct (FC)**: Fully functional and correct tests.
 * **Functionally Incorrect (FI)**: Tests executed but logic errors were present.
@@ -132,6 +134,6 @@ If you find this repository useful in your research, please cite:
   year = {2025},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/JUJasmin/FlutterLLMTestGeneration}}
+  howpublished = {\url{TO BE INCLUDED LATER}}
 }
 ```
