@@ -1,0 +1,44 @@
+Write a Flutter widget test for the following widget from the Flutter Testing App sample:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+```
+The test should verify that the `ProfileAvatar` widget renders a `CircleAvatar` with the correct image.
+
+## Solution
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_testing_app/widgets/profile_avatar.dart';
+
+void main() {
+  testWidgets('ProfileAvatar renders a CircleAvatar with the correct image', (tester) async {
+    const imageUrl = 'https://example.com/image.jpg';
+    await tester.pumpWidget(
+      MaterialApp(
+        home: ProfileAvatar(imageUrl: imageUrl),
+      ),
+    );
+
+    final avatar = find.byType(CircleAvatar);
+    expect(avatar, findsOneWidget);
+    expect(avatar.first.child, isA<NetworkImage>());
+    expect((avatar.first.child as NetworkImage).imageUrl, imageUrl);
+  });
+}
+```
+
+## Explanation
+
+In this test, we use the `testWidgets` function to define a test that verifies the behavior of the `ProfileAvatar` widget. The test starts by creating a `MaterialApp` widget with a `ProfileAvatar` widget as its home. We then use the `pumpWidget` function to render the widget and its

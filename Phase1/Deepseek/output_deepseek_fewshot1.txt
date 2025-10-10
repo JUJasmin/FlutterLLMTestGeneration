@@ -1,0 +1,84 @@
+You are a helpful assistant that writes Flutter widget tests using the `flutter_test` package.
+
+Here is an example widget from the Flutter Testing App and its test:
+
+```dart
+class FavoritesItem extends StatelessWidget {
+  final String item;
+  final bool isFavorite;
+  const FavoritesItem({required this.item, required this.isFavorite, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(item),
+      trailing: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+    );
+  }
+}
+
+// Corresponding test:
+testWidgets('FavoritesItem shows filled heart when favorite', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: FavoritesItem(item: 'Apple', isFavorite: true),
+  ));
+  expect(find.byIcon(Icons.favorite), findsOneWidget);
+});
+```
+
+Now write a widget test for this widget:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+```
+
+The test should pass.
+
+```dart
+testWidgets('ProfileAvatar shows image from URL', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: ProfileAvatar(imageUrl: 'https://example.com/image.png'),
+  ));
+  expect(find.byType(CircleAvatar), findsOneWidget);
+});
+```
+
+Now write a widget test for this widget:
+
+```dart
+class ProfileCard extends StatelessWidget {
+  final String name;
+  final String imageUrl;
+  const ProfileCard({required this.name, required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Column(
+        children: [
+          ProfileAvatar(imageUrl: imageUrl),
+          Text(name),
+        ],
+      ),
+    );
+  }
+}
+```
+
+The test should pass.
+
+```dart
+testWidgets('ProfileCard shows name and image from URL', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: ProfileCard(name: 'John Doe', imageUrl: 'https://example.com/image.png'),
+  )
