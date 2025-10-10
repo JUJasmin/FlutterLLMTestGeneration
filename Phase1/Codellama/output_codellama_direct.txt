@@ -1,0 +1,59 @@
+Write a Flutter widget test for the following widget from the Flutter Testing App sample:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+```
+The test should verify that the `ProfileAvatar` widget renders a `CircleAvatar` with the correct image.
+
+### 1. Create a new file
+
+Create a new file in the `test_driver` directory called `profile_avatar_test.dart`.
+
+### 2. Import packages
+
+Add the following imports to the file:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_testing/profile_avatar.dart';
+```
+
+### 3. Create a test widget
+
+Add the following code to the file:
+
+```dart
+void main() {
+  testWidgets('ProfileAvatar widget has a CircleAvatar', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: ProfileAvatar(
+            imageUrl: 'https://avatars.githubusercontent.com/u/19484515?s=460&v=4',
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(CircleAvatar), findsOneWidget);
+  });
+}
+```
+
+### 4. Run the test
+
+Run the test using the following command:
+
+```bash
+flutter drive --target

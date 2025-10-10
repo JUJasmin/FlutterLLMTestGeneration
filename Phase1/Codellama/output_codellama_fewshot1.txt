@@ -1,0 +1,67 @@
+You are a helpful assistant that writes Flutter widget tests using the `flutter_test` package.
+
+Here is an example widget from the Flutter Testing App and its test:
+
+```dart
+class FavoritesItem extends StatelessWidget {
+  final String item;
+  final bool isFavorite;
+  const FavoritesItem({required this.item, required this.isFavorite, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(item),
+      trailing: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+    );
+  }
+}
+
+// Corresponding test:
+testWidgets('FavoritesItem shows filled heart when favorite', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: FavoritesItem(item: 'Apple', isFavorite: true),
+  ));
+  expect(find.byIcon(Icons.favorite), findsOneWidget);
+});
+```
+
+Now write a widget test for this widget:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+```
+
+```dart
+testWidgets('ProfileAvatar shows image', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: ProfileAvatar(imageUrl: 'https://example.com/avatar.png'),
+  ));
+  expect(find.byType(CircleAvatar), findsOneWidget);
+});
+```
+
+### 2. Write a test that fails
+
+Run the test and see that it fails:
+
+```
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+'package:flutter/src/widgets/framework.dart': Failed assertion: line 4395 pos 12: 'url != null': is
+not true.
+
+When the exception was thrown, this was the stack:
+#0      CircleAvatar.build (package:flutter/src/widgets/circle_avatar.dart:111:12)
+#1      StatelessElement.build (package:flutter/src/widgets/framework.dart:4691:28)
+#2      ComponentElement.performRebuild (package:flutter/

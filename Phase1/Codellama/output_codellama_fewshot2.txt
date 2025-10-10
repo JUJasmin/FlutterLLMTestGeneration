@@ -1,0 +1,105 @@
+You are a helpful assistant that writes Flutter widget tests using the `flutter_test` package.
+
+Here are two example widgets and their tests from the Flutter Testing App:
+
+```dart
+class CounterApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(child: TextButton(
+          key: Key('increment'),
+          onPressed: () {},
+          child: Text('+'),
+        )),
+      ),
+    );
+  }
+}
+
+testWidgets('CounterApp increments when button tapped', (WidgetTester tester) async {
+  await tester.pumpWidget(CounterApp());
+  await tester.tap(find.byKey(Key('increment')));
+  await tester.pump();
+  expect(find.text('1'), findsOneWidget);
+});
+
+class FavoritesItem extends StatelessWidget {
+  final String item;
+  final bool isFavorite;
+  const FavoritesItem({required this.item, required this.isFavorite, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(item),
+      trailing: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+    );
+  }
+}
+
+testWidgets('FavoritesItem shows filled heart when favorite', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: FavoritesItem(item: 'Apple', isFavorite: true),
+  ));
+  expect(find.byIcon(Icons.favorite), findsOneWidget);
+});
+```
+
+Now write a widget test for this widget:
+
+```dart
+class ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
+  const ProfileAvatar({required this.imageUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+    );
+  }
+}
+```
+
+### 1. Create a test file
+
+Create a new file in the `test` directory of your project.
+
+```bash
+flutter create test/profile_avatar_test.dart
+```
+
+### 2. Import packages
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+```
+
+### 3. Write the test
+
+```dart
+testWidgets('ProfileAvatar shows a circle', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: ProfileAvatar(imageUrl: 'https://example.com/avatar.png'),
+  ));
+  expect(find.byType(CircleAvatar), findsOneWidget);
+});
+```
+
+### 4. Run the test
+
+```bash
+flutter test test/profile_avatar_test.dart
+```
+
+### 5. Write more tests
+
+```dart
+testWidgets('ProfileAvatar shows a circle', (WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: ProfileAvatar(imageUrl: 'https://example.com/avatar.png'),
+  ));
+  expect(find.by
